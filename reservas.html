@@ -27,62 +27,92 @@
       position: absolute; top: 0; left: 0; width: 100%;
       z-index: 1040;
     }
+    
     #navbarMeson {
       background: linear-gradient(180deg, #2F1F14 0%, #1e130c 100%);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       border-radius: 0 0 24px 24px;
     }
-    .menu-content { padding: 1.5rem 1rem; gap: 0.8rem; }
+
+    .menu-content {
+      padding: 1.5rem 1rem;
+      gap: 0.8rem;
+    }
+    
     .custom-nav-link {
       color: var(--color-secundario) !important;
-      font-weight: 500; font-size: 1.05rem;
-      padding: 0.6rem 1.2rem; border-radius: 8px;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
       transition: all 0.25s ease;
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       text-decoration: none;
     }
+    
     .custom-nav-link:hover, .custom-nav-link.active {
-      background: var(--color-principal); color: #fff !important;
-      transform: translateY(-2px); box-shadow: 0 4px 14px rgba(139,58,58,0.45);
+      background: var(--color-principal);
+      color: #fff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(139,58,58,0.45);
     }
-    .toggle-container { background: transparent; margin-top: 0.2rem; }
+    
+    .toggle-container {
+      background: transparent;
+      margin-top: 0.5rem;
+    }
+    
     .nav-arrow-btn {
-      background: transparent; border: none; color: #fff;
-      font-size: 2.6rem; padding: 0; cursor: pointer;
+      background: transparent; border: none;
+      color: #fff;
+      font-size: 2.2rem;
+      padding: 0; cursor: pointer;
       transition: color 0.3s, transform 0.3s;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
     }
+    
     .nav-arrow-btn:focus { outline: none; }
     .nav-arrow-btn:hover { color: var(--color-secundario); }
-    .nav-arrow-btn #menuArrow { display: inline-block; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
-    .nav-arrow-btn.collapsed #menuArrow { transform: rotate(180deg); }
-
+    
+    .nav-arrow-btn #menuArrow {
+      display: inline-block; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    
+    .nav-arrow-btn.collapsed #menuArrow {
+      transform: rotate(180deg);
+    }
+    
     .mobile-break { display: none; }
 
-    @media (min-width: 768px) and (max-width: 991px) {
+    @media (min-width: 768px) and (max-width: 1050px) {
       .link-text { display: none; }
       .menu-content { gap: 1.5rem; }
       .custom-nav-link { padding: 0.6rem 1rem; }
     }
     @media (max-width: 767px) {
-      .menu-content { gap: 0.5rem; padding: 1.2rem 0.4rem; justify-content: center; }
-      .custom-nav-link { font-size: 0.9rem; padding: 0.5rem 0.7rem; gap: 0.35rem; }
+      .menu-content { gap: 0.6rem; padding: 1.2rem 0.5rem; justify-content: center; }
+      .custom-nav-link { font-size: 0.95rem; padding: 0.5rem 0.8rem; gap: 0.35rem; }
       .mobile-break { display: block; flex-basis: 100%; height: 0; margin: 0; }
     }
 
     /* ── HERO HEADER RESERVAS ── */
     .hero-header {
-      position: relative; min-height: 50vh; 
+      position: relative;
+      min-height: 50vh; 
       display: flex; align-items: center; justify-content: center;
-      overflow: hidden; background: url('img/IMG_2361.jpg') center 50% / cover no-repeat;
+      overflow: hidden;
+      background: url('img/IMG_2361.jpg') center 50% / cover no-repeat;
     }
     .hero-header::before {
-      content: ''; position: absolute; inset: 0;
+      content: '';
+      position: absolute; inset: 0;
       background: linear-gradient(160deg, rgba(47,31,20,0.85) 0%, rgba(139,58,58,0.5) 100%);
     }
     .hero-header .hero-content { 
       position: relative; z-index: 2; text-align: center; color: #fff; 
-      padding-top: 140px; 
+      padding-top: 130px; 
     }
     
     /* ── RESTO ── */
@@ -262,7 +292,7 @@
     <div class="mt-5" data-animate>
       <div class="ratio ratio-21x9 rounded-4 overflow-hidden shadow-sm">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.6!2d-6.0750!3d37.4350!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDI2JzA2LjAiTiA2wrAwNCczMC4wIlc!5e0!3m2!1ses!2ses!4v1700000000000"
+          src="https://maps.google.com/maps?q=Mes%C3%B3n%20Navarro,%20Pl.%20Sant%C3%ADsimo%20Sacramento,%203,%20Valencina%20de%20la%20Concepci%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
           style="border:0;" allowfullscreen="" loading="lazy" title="Ubicación Mesón Navarro">
         </iframe>
       </div>
