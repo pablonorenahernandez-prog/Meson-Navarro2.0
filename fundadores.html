@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Miembros Fundadores | Mesón Navarro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-principal:  #8B3A3A;
+      --color-secundario: #F5DEB3;
+      --color-oscuro:     #2F1F14;
+      --color-acento:     #C4773B;
+    }
+    body { overflow-x: hidden; font-family: 'Lato', system-ui, sans-serif; background: #f8f5f0; }
+
+    /* ── NAVBAR DESPLEGABLE MIXTA ── */
+    .top-nav-wrapper {
+      position: absolute; top: 0; left: 0; width: 100%;
+      z-index: 1040;
+    }
+    #navbarMeson {
+      background: linear-gradient(180deg, #2F1F14 0%, #1e130c 100%);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border-radius: 0 0 24px 24px;
+    }
+    .menu-content { padding: 1.5rem 1rem; gap: 0.8rem; }
+    .custom-nav-link {
+      color: var(--color-secundario) !important;
+      font-weight: 500; font-size: 1.05rem;
+      padding: 0.6rem 1.2rem; border-radius: 8px;
+      transition: all 0.25s ease;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+    .custom-nav-link:hover, .custom-nav-link.active {
+      background: var(--color-principal); color: #fff !important;
+      transform: translateY(-2px); box-shadow: 0 4px 14px rgba(139,58,58,0.45);
+    }
+    .toggle-container { background: transparent; margin-top: 0.2rem; }
+    .nav-arrow-btn {
+      background: transparent; border: none; color: #fff;
+      font-size: 2.6rem; padding: 0; cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .nav-arrow-btn:focus { outline: none; }
+    .nav-arrow-btn:hover { color: var(--color-secundario); }
+    .nav-arrow-btn #menuArrow { display: inline-block; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .nav-arrow-btn.collapsed #menuArrow { transform: rotate(180deg); }
+
+    .mobile-break { display: none; }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      .link-text { display: none; }
+      .menu-content { gap: 1.5rem; }
+      .custom-nav-link { padding: 0.6rem 1rem; }
+    }
+    @media (max-width: 767px) {
+      .menu-content { gap: 0.5rem; padding: 1.2rem 0.4rem; justify-content: center; }
+      .custom-nav-link { font-size: 0.9rem; padding: 0.5rem 0.7rem; gap: 0.35rem; }
+      .mobile-break { display: block; flex-basis: 100%; height: 0; margin: 0; }
+    }
+
+    /* ── HERO HEADER ── */
+    .hero-header {
+      position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center;
+      overflow: hidden; background: url('img/IMG_2555.jpg') center 50% / cover no-repeat;
+    }
+    .hero-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(47,31,20,0.85) 0%, rgba(139,58,58,0.55) 100%);
+    }
+    .hero-header .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; padding-top: 140px; }
+    .hero-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; letter-spacing: 0.02em; text-shadow: 0 2px 16px rgba(0,0,0,0.4); animation: heroIn 1s cubic-bezier(0.22,1,0.36,1) both; }
+    .hero-ornament { display: block; margin: 0.5rem auto 0; width: 60px; height: 2px; background: var(--color-secundario); border-radius: 2px; animation: heroIn 1s 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes heroIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── SECTIONS & STYLING ── */
+    .section-titulo { font-family: 'Playfair Display', serif; color: var(--color-oscuro); font-size: clamp(1.6rem, 3vw, 2.2rem); position: relative; display: inline-block; }
+    .section-titulo::after { content: ''; display: block; margin-top: 0.4rem; width: 50px; height: 3px; background: var(--color-principal); border-radius: 2px; }
+    
+    .img-fundador {
+      width: 100%; max-height: 440px; object-fit: cover; border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(47,31,20,0.2); transition: transform 0.5s ease;
+    }
+    .img-fundador:hover { transform: scale(1.02); }
+
+    .btn-volver {
+      border: 2px solid var(--color-principal); color: var(--color-principal);
+      background: transparent; padding: 0.6rem 2rem; font-weight: 700; border-radius: 50px;
+      transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-volver:hover { background: var(--color-principal); color: #white !important; color: #fff !important; transform: translateY(-2px); }
+
+    [data-animate] { will-change: opacity, transform; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR DESPLEGABLE MIXTA -->
+<nav class="top-nav-wrapper">
+  <div class="collapse show" id="navbarMeson">
+    <div class="menu-content container d-flex justify-content-center flex-wrap align-items-center">
+      <a class="custom-nav-link" href="index.html"><i class="bi bi-house-door-fill"></i> <span class="link-text">Inicio</span></a>
+      <a class="custom-nav-link" href="carta.html"><i class="bi bi-menu-button-wide-fill"></i> <span class="link-text">Carta</span></a>
+      <a class="custom-nav-link" href="reservas.html"><i class="bi bi-calendar-check-fill"></i> <span class="link-text">Reservas</span></a>
+      <div class="mobile-break"></div>
+      <a class="custom-nav-link" href="galeria.html"><i class="bi bi-images"></i> <span class="link-text">Galería</span></a>
+      <a class="custom-nav-link" href="nosotros.html"><i class="bi bi-people-fill"></i> <span class="link-text">Nosotros</span></a>
+    </div>
+  </div>
+  <div class="toggle-container text-center">
+    <button class="nav-arrow-btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMeson" aria-expanded="true">
+      <i class="bi bi-chevron-up" id="menuArrow"></i>
+    </button>
+  </div>
+</nav>
+
+<div class="main-content">
+  <!-- HERO -->
+  <header class="hero-header">
+    <div class="hero-content">
+      <h1>Miembros Fundadores</h1>
+      <span class="hero-ornament"></span>
+      <p class="lead mt-3">Los pilares e historia detrás de nuestros fogones</p>
+    </div>
+  </header>
+
+  <!-- BIOGRAFÍAS -->
+  <main class="container py-5 my-4">
+    <div class="row align-items-center g-5">
+      <div class="col-md-5" data-animate data-animate-dir="left">
+        <img src="img/abuela_dolores.jpg" class="img-fundador" alt="Abuela Dolores">
+      </div>
+      <div class="col-md-7" data-animate data-animate-dir="right">
+        <p class="text-uppercase fw-bold mb-2" style="color:var(--color-acento); letter-spacing:0.12em; font-size:0.8rem;">Alma de la Cocina</p>
+        <h2 class="section-titulo mb-4">La Abuela Dolores</h2>
+        <p class="text-muted fs-5 lh-lg">Desde la apertura en 1977, la <strong>Abuela Dolores</strong> ha sido el corazón latente del Mesón Navarro. Con paciencia, esmero y un respeto sagrado por las recetas tradicionales sevillanas, sentó las bases culinarias que nos definen hoy en día.</p>
+        <p class="text-muted lh-lg">Sus legendarios guisos caseros, potajes y su toque inconfundible en las especialidades de carne con tomate y la cola de toro marcaron un estándar de calidad insustituible. Ella nos enseñó que el ingrediente más importante en la cocina es el tiempo y el cariño a nuestra tierra de Valencina de la Concepción.</p>
+      </div>
+    </div>
+
+    <!-- BOTÓN REGRESAR -->
+    <div class="text-center mt-5 pt-4" data-animate>
+      <a href="nosotros.html" class="btn-volver">
+        <i class="bi bi-arrow-left"></i> Volver a Nosotros
+      </a>
+    </div>
+  </main>
+
+  <footer class="py-4 text-center text-white" style="background:var(--color-oscuro);">
+    <p class="mb-0 opacity-75">© 2025 Mesón Navarro – Pl. Santísimo Sacramento, 3 · Valencina de la Concepción</p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  /* ── Animación Flechita Menú Móvil ── */
+  const navCollapse = document.getElementById('navbarMeson');
+  const menuArrow = document.getElementById('menuArrow');
+  if(navCollapse && menuArrow){
+    navCollapse.addEventListener('show.bs.collapse', () => menuArrow.classList.add('open'));
+    navCollapse.addEventListener('hide.bs.collapse', () => menuArrow.classList.remove('open'));
+  }
+</script>
+
+<!-- ══ SISTEMA DE ANIMACIONES ══ -->
+<script>
+(function () {
+  'use strict';
+  const getTransform = (dir) => {
+    switch (dir) {
+      case 'left':  return 'translateX(-52px)';
+      case 'right': return 'translateX(52px)';
+      default:      return 'translateY(40px)';
+    }
+  };
+
+  function initScrollElements() {
+    document.querySelectorAll('[data-animate]').forEach(el => {
+      const delay = el.dataset.animateDelay || 0;
+      const dir   = el.dataset.animateDir   || 'up';
+      el.style.transition = `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}ms`;
+      el.style.opacity   = '0';
+      el.style.transform = getTransform(dir);
+      el._animDir  = dir;
+      el._visible  = false;
+    });
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.style.opacity   = '1';
+          el.style.transform = 'translate(0,0)';
+          el._visible = true;
+        } else if (el._visible) {
+          el.style.opacity   = '0';
+          el.style.transform = getTransform(el._animDir);
+          el._visible = false;
+        }
+      });
+    }, { threshold: [0.08, 0.04], rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('[data-animate]').forEach(el => obs.observe(el));
+  }
+  document.addEventListener('DOMContentLoaded', () => { initScrollElements(); });
+})();
+</script>
+</body>
+</html>
